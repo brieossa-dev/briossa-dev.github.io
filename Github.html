@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabrielle Rodrigues Nascimento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f5f0e8;
+      --accent: #b5451b;
+      --accent2: #d4763b;
+      --muted: #7a7060;
+      --line: #d4cec2;
+      --white: #ffffff;
+      --sidebar-bg: #f9f5ee;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── TOP NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 56px;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 56px;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--line);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-stripe {
+      height: 7px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 60%, #e8a87c 100%);
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 40px 52px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-name h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-name .tagline {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .contact-item .icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item .icon svg {
+      width: 12px;
+      height: 12px;
+      fill: white;
+    }
+
+    .contact-item a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    /* ── GITHUB BADGE ── */
+    .github-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+
+    .github-badge:hover { background: var(--accent); }
+
+    .github-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 36px; }
+
+    .s-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-chip {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin: 3px 3px 3px 0;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-row { margin-bottom: 14px; }
+
+    .lang-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .lang-level {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 0.68rem;
+      background: var(--accent);
+      color: white;
+      padding: 2px 9px;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .s-text {
+      font-size: 0.83rem;
+      color: var(--ink);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── MAIN SECTIONS ── */
+    .main { display: flex; flex-direction: column; gap: 40px; }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #3a3530;
+      font-weight: 300;
+    }
+
+    /* Timeline entries */
+    .entry {
+      margin-bottom: 26px;
+      padding-left: 18px;
+      border-left: 2.5px solid var(--line);
+      position: relative;
+      transition: border-color 0.25s;
+    }
+
+    .entry:hover { border-left-color: var(--accent); }
+
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: -5.5px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .entry:hover::before { transform: scale(1.3); }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .entry-company {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .entry-date {
+      font-size: 0.73rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .entry-desc {
+      font-size: 0.85rem;
+      color: #3a3530;
+      margin-top: 8px;
+      line-height: 1.68;
+      font-weight: 300;
+    }
+
+    /* Education */
+    .edu-entry {
+      margin-bottom: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .edu-year {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      background: var(--ink);
+      color: white;
+      padding: 3px 9px;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .edu-school {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    .edu-entry:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      letter-spacing: 0.04em;
+    }
+
+    footer span { color: var(--accent); font-weight: 500; }
+
+    footer .footer-stripe {
+      height: 5px;
+      background: linear-gradient(90deg, #e8a87c 0%, var(--accent) 100%);
+      margin-top: 20px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 36px;
+      }
+      .hero-contact { align-items: flex-start; }
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">briossa-dev</span>
+    <ul class="nav-links">
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#formacao">Formação</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-stripe"></div>
+    <div class="hero-inner">
+      <div class="hero-name">
+        <h1>Gabrielle<br>Rodrigues Nascimento</h1>
+        <p class="tagline">Análise &amp; Desenvolvimento de Sistemas · Tanatopraxia</p>
+        <a class="github-badge" href="https://github.com/briossa-dev" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404 11.52 11.52 0 013.003.404c2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          github.com/briossa-dev
+        </a>
+      </div>
+      <div class="hero-contact">
+        <div class="contact-item">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.57 3.58 1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+          </span>
+          (18) 99631-2221
+        </div>
+        <div class="contact-item">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </span>
+          <a href="mailto:brierodrigues022@gmail.com">brierodrigues022@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+          </span>
+          Cornélio Procópio – PR
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="s-section">
+        <h3>Idiomas</h3>
+        <div class="lang-row">
+          <p class="lang-name">Inglês</p>
+          <span class="cert-badge">Fluente</span>
+        </div>
+        <div class="lang-row">
+          <p class="lang-name">Português</p>
+          <span class="cert-badge">Nativo</span>
+        </div>
+      </div>
+
+      <div class="s-section">
+        <h3>Habilidades</h3>
+        <span class="skill-chip">HTML / CSS</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">Lógica de Programação</span>
+        <span class="skill-chip">Anatomia Humana</span>
+        <span class="skill-chip">Gestão Financeira</span>
+        <span class="skill-chip">Atendimento ao Cliente</span>
+        <span class="skill-chip">Tanatopraxia</span>
+      </div>
+
+      <div class="s-section">
+        <h3>Localização</h3>
+        <p class="s-text">Cornélio Procópio<br>Paraná – Brasil</p>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <div class="section" id="perfil">
+        <h2>Perfil Profissional</h2>
+        <p class="profile-text">
+          Profissional versátil com formação interdisciplinar em Análise e Desenvolvimento de Sistemas e Tanatopraxia. Responsável por zelar pelas boas relações entre empregado e empregador, com conhecimento sobre anatomia humana, programação e sistemas. Em busca de oportunidade e crescimento profissional na área de tecnologia.
+        </p>
+      </div>
+
+      <div class="section" id="experiencia">
+        <h2>Experiência</h2>
+
+        <div class="entry">
+          <div class="entry-title">Gerente</div>
+          <div class="entry-company">Bordados Noroeste</div>
+          <div class="entry-date">Jan 2019 – Jul 2023 · Jan 2025 – Jul 2025</div>
+          <p class="entry-desc">
+            Responsável pela gestão financeira e atendimento ao cliente da empresa. Coordenação de equipe, controle de fluxo de caixa e relacionamento com fornecedores e clientes.
+          </p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title">Estagiária de Tanatopraxia</div>
+          <div class="entry-company">Funerária OFEBAS</div>
+          <div class="entry-date">Mar 2024 – Jan 2025</div>
+          <p class="entry-desc">
+            Realização de procedimentos técnicos de tanatopraxia, aplicando conhecimentos de anatomia humana e técnicas de preservação e preparo.
+          </p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title">Trabalho Freelance</div>
+          <div class="entry-company">Autônoma</div>
+          <div class="entry-date">Período variável</div>
+          <p class="entry-desc">
+            Atuação como garçonete, bartender, recreadora e atendimento ao cliente em eventos e estabelecimentos diversos. Desenvolvimento de habilidades interpessoais e adaptabilidade.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="formacao">
+        <h2>Formação</h2>
+
+        <div class="edu-entry">
+          <span class="edu-year">2025 – atual</span>
+          <div>
+            <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+            <div class="edu-school">Universidade Tecnológica Federal do Paraná – UTFPR</div>
+          </div>
+        </div>
+
+        <div class="edu-entry">
+          <span class="edu-year">2023 – 2024</span>
+          <div>
+            <div class="edu-degree">Técnico em Tanatopraxia e Necropsia</div>
+            <div class="edu-school">SedeEdu – Sorocaba</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>Feito por <span>Gabrielle Rodrigues Nascimento</span> · <a href="https://github.com/briossa-dev" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/briossa-dev</a></p>
+    <div class="footer-stripe"></div>
+  </footer>
+
+</body>
+</html>
